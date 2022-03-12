@@ -44,14 +44,15 @@ public class CoinPriceMonitoringLogic extends WebSocketClient {
         }
 
         double price = 0;
-        System.out.println("----------------------------------------------");
+        System.out.println();
+        System.out.println("\033[31m---------------------------------------------------\033[0m");
         for(Map.Entry<String,Double> entry : newestPrice.entrySet()) {
             double temp = entry.getValue() * holdCoins.get(entry.getKey());
             price+= temp;
             System.out.format("%-15s  ----------------  %15f\n", entry.getKey(), temp);
         }
-        System.out.println();
-        System.out.println("------------- " + price + "----------------");
+
+        System.out.format("\033[31m-------------------\033[0m  \033[32m%f\033[0m \033[31m-----------------\033[0m\n", price);
     }
 
     @Override
